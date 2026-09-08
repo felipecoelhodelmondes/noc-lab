@@ -32,7 +32,7 @@ A decisão foi usar VMs reais no VirtualBox em vez de containers Docker, para fi
 
 Cada VM tem dois adaptadores de rede: **NAT** (acesso à internet, para atualizações) e **Rede Interna "NOC-LAB"** (IP fixo, isolada, onde a monitoração acontece).
 
-Veja `evidencias/VirtualBox.png` e `evidencias/NOC-Server_IPa.png` para a configuração de rede real.
+Veja [evidencias/VirtualBox.png](evidencias/VirtualBox.png) e [evidencias/NOC-Server_IPa.png](evidencias/NOC-Server_IPa.png) para a configuração de rede real.
 
 ## Stack
 
@@ -81,7 +81,7 @@ Chamados são abertos automaticamente no GLPI via webhook oficial do Zabbix (`me
 - Media type importado do branch `release/7.0` do repositório oficial (o branch `master` causa erro de versão incompatível)
 - Action de trigger disparando para severidade ≥ Warning
 
-Essa integração já está validada em produção no lab — ver `evidencias/Kali_Zabbix_ActionLog.png` (status "Sent") e `evidencias/Kali_GLPI_Chamado.png` (chamado aberto e resolvido automaticamente, com todos os dados do problema do Zabbix).
+Essa integração já está validada em produção no lab — ver [evidencias/Kali_Zabbix_ActionLog.png](evidencias/Kali_Zabbix_ActionLog.png) (status "Sent") e [evidencias/Kali_GLPI_Chamado.png](evidencias/Kali_GLPI_Chamado.png) (chamado aberto e resolvido automaticamente, com todos os dados do problema do Zabbix).
 
 ## Dashboards
 
@@ -89,7 +89,7 @@ Grafana conectado ao Zabbix via plugin `alexanderzobnin-zabbix-datasource`, aute
 
 Dashboard consolidado **NOC-CLIENT** com 6 painéis: CPU, Memory %, Disk, Network Traffic, Uptime, FreeSwap %.
 
-Ver `evidencias/Kali_Grafana_Dashboard.png`.
+Ver [evidencias/Kali_Grafana_Dashboard.png](evidencias/Kali_Grafana_Dashboard.png).
 
 ## Incidentes documentados
 
@@ -110,14 +110,14 @@ A matriz completa de escalonamento N1 → N2 → N3 está em [escalonamento.md](
 
 Prints reais de dashboards, logs e chamados estão em [`evidencias/`](evidencias/):
 
-- `VirtualBox.png` — as 3 VMs configuradas
-- `NOC-Server_IPa.png` — rede da NOC-SERVER (`ip a`)
-- `Kali_Zabbix_Dashboard.png` — Global view do Zabbix
-- `Kali_Zabbix_LatestData.png` — dados coletados em tempo real (77 itens da NOC-CLIENT)
-- `Kali_Zabbix_Problems.png` — histórico de problemas/alertas
-- `Kali_Zabbix_ActionLog.png` — webhook GLPI disparando com sucesso
-- `Kali_GLPI_Chamado.png` — chamado aberto e resolvido automaticamente no GLPI
-- `Kali_Grafana_Dashboard.png` — dashboard consolidado NOC-CLIENT
+- [VirtualBox.png](evidencias/VirtualBox.png) — as 3 VMs configuradas
+- [NOC-Server_IPa.png](evidencias/NOC-Server_IPa.png) — rede da NOC-SERVER (`ip a`)
+- [Kali_Zabbix_Dashboard.png](evidencias/Kali_Zabbix_Dashboard.png) — Global view do Zabbix
+- [Kali_Zabbix_LatestData.png](evidencias/Kali_Zabbix_LatestData.png) — dados coletados em tempo real (77 itens da NOC-CLIENT)
+- [Kali_Zabbix_Problems.png](evidencias/Kali_Zabbix_Problems.png) — histórico de problemas/alertas
+- [Kali_Zabbix_ActionLog.png](evidencias/Kali_Zabbix_ActionLog.png) — webhook GLPI disparando com sucesso
+- [Kali_GLPI_Chamado.png](evidencias/Kali_GLPI_Chamado.png) — chamado aberto e resolvido automaticamente no GLPI
+- [Kali_Grafana_Dashboard.png](evidencias/Kali_Grafana_Dashboard.png) — dashboard consolidado NOC-CLIENT
 
 ## Baseado em
 
