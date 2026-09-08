@@ -62,7 +62,7 @@ Evidências registradas no chamado
         │
         ├── Resolvido pelo N1 → documenta e encerra
         │
-        └── Não resolvido → escalona para N2/N3 (ver escalonamento.md)
+        └── Não resolvido → escalona para N2/N3 ([escalonamento.md](escalonamento.md))
 ```
 
 ## GLPI — estrutura ITSM
@@ -72,13 +72,13 @@ Evidências registradas no chamado
 
 ## Integração Zabbix → GLPI
 
-Chamados são abertos automaticamente no GLPI via webhook oficial do Zabbix (`media_glpi.yaml`), usando a API v2/OAuth2 do GLPI. Configuração:
+Chamados são abertos automaticamente no GLPI via webhook oficial do Zabbix, usando a API v2/OAuth2 do GLPI. Configuração:
 
 - Cliente OAuth dedicado no GLPI
 - Perfil de permissão dedicado (Chamados: Update/Create/See all; Followups: Add)
 - Usuário técnico `zabbix-webhook`
 - Macro global `{$ZABBIX.URL}` no Zabbix
-- Media type importado do branch `release/7.0` do repositório oficial (o branch `master` causa erro de versão incompatível)
+- Media type importado do branch `release/7.0` do repositório oficial
 - Action de trigger disparando para severidade ≥ Warning
 
 Essa integração já está validada em produção no lab — ver [evidencias/Kali_Zabbix_ActionLog.png](evidencias/Kali_Zabbix_ActionLog.png) (status "Sent") e [evidencias/Kali_GLPI_Chamado.png](evidencias/Kali_GLPI_Chamado.png) (chamado aberto e resolvido automaticamente, com todos os dados do problema do Zabbix).
@@ -101,28 +101,3 @@ Ver [evidencias/Kali_Grafana_Dashboard.png](evidencias/Kali_Grafana_Dashboard.pn
 | 4 | CPU acima de 90% por 5 minutos na NOC-CLIENT | Simulado | [incidentes/incidente-cpu-alta.md](incidentes/incidente-cpu-alta.md) |
 
 Todos seguem o mesmo formato: **Sintoma → Impacto → Evidências → Diagnóstico → Ação → Resultado → Prevenção**.
-
-## Escalonamento
-
-A matriz completa de escalonamento N1 → N2 → N3 está em [escalonamento.md](escalonamento.md).
-
-## Evidências
-
-Prints reais de dashboards, logs e chamados estão em [`evidencias/`](evidencias/):
-
-- [VirtualBox.png](evidencias/VirtualBox.png) — as 3 VMs configuradas
-- [NOC-Server_IPa.png](evidencias/NOC-Server_IPa.png) — rede da NOC-SERVER (`ip a`)
-- [Kali_Zabbix_Dashboard.png](evidencias/Kali_Zabbix_Dashboard.png) — Global view do Zabbix
-- [Kali_Zabbix_LatestData.png](evidencias/Kali_Zabbix_LatestData.png) — dados coletados em tempo real (77 itens da NOC-CLIENT)
-- [Kali_Zabbix_Problems.png](evidencias/Kali_Zabbix_Problems.png) — histórico de problemas/alertas
-- [Kali_Zabbix_ActionLog.png](evidencias/Kali_Zabbix_ActionLog.png) — webhook GLPI disparando com sucesso
-- [Kali_GLPI_Chamado.png](evidencias/Kali_GLPI_Chamado.png) — chamado aberto e resolvido automaticamente no GLPI
-- [Kali_Grafana_Dashboard.png](evidencias/Kali_Grafana_Dashboard.png) — dashboard consolidado NOC-CLIENT
-
-## Baseado em
-
-Estrutura de README inspirada no repositório [rafaellima418/homelab-rede](https://github.com/rafaellima418/homelab-rede).
-
-## Projeto anterior
-
-Este lab é a continuação de um projeto de SOC (simulador de incidentes por IA), aplicando a mesma metodologia a um cenário de NOC com infraestrutura real.
