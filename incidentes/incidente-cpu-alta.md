@@ -11,7 +11,7 @@ Este é o incidente que valida o fluxo completo do laboratório de ponta a ponta
 
 ## Sintoma
 
-Utilização de CPU da NOC-CLIENT acima de 90% sustentada por mais de 5 minutos, disparando trigger de severidade Warning no Zabbix.
+Utilização de CPU do NOC-CLIENT acima de 90% sustentada por mais de 5 minutos, disparando trigger de severidade Warning no Zabbix.
 
 ## Impacto
 
@@ -19,10 +19,9 @@ CPU saturada compromete o tempo de resposta de todos os serviços rodando no hos
 
 ## Reprodução (simulação controlada)
 
-Carga de CPU gerada propositalmente com duas ferramentas em conjunto:
+Carga de CPU gerada propositalmente com a ferramenta:
 
 ```bash
-stress --cpu <n_cores> --timeout 400
 yes > /dev/null &
 ```
 
@@ -34,21 +33,20 @@ yes > /dev/null &
 
 ## Ação (primeiro combate N1)
 
-1. Confirmado que a carga era do teste controlado (processos `stress` e `yes`)
-2. Processos finalizados para liberar a CPU:
+1. Confirmado que a carga era do teste controlado (processo `yes`)
+2. Processo finalizado para liberar a CPU:
    ```bash
-   pkill stress
    pkill yes
    ```
 3. Confirmado o retorno da utilização de CPU a níveis normais (~5% após a finalização, conforme registrado no chamado de resolução)
 
 ## Resultado — fluxo de integração comprovado
 
-- **Zabbix → GLPI (abertura):** Action log do Zabbix registrou o envio com status **Sent**, mídia GLPI, mensagem contendo host, severidade, utilização de CPU e ID do problema original (ver `evidencias/Kali_Zabbix_ActionLog.png`)
+- **Zabbix → GLPI (abertura):** Action log do Zabbix registrou o envio com status **Sent**, mídia GLPI, mensagem contendo host, severidade, utilização de CPU e ID do problema original ([evidencias/Kali_Zabbix_ActionLog.png](evidencias/Kali_Zabbix_ActionLog.png))
 - **Chamado criado automaticamente no GLPI** pelo usuário técnico `zabbix-webhook`, com todos os dados do problema preenchidos automaticamente: host NOC-CLIENT, severidade Warning, utilização de 100%, link direto de volta para o problema no Zabbix
 - **Resolução também registrada automaticamente**: quando o alerta foi resolvido no Zabbix, o mesmo chamado recebeu uma atualização (followup) com a confirmação da resolução, horário e utilização final de CPU (5.06%)
-- Chamado fechado com status **Solucionado** no GLPI (ver `evidencias/Kali_GLPI_Chamado.png`)
-
+- Chamado fechado com status **Solucionado** no GLPI ([evidencias/Kali_GLPI_Chamado.png](evidencias/Kali_GLPI_Chamado.png))
+  
 ## Prevenção
 
 - Investigar, em um cenário real (não simulado), quais processos costumam gerar picos de CPU recorrentes e considerar alertas de tendência, não só de threshold pontual
