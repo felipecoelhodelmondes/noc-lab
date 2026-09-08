@@ -56,4 +56,4 @@ Escalona para N3 quando:
 
 ## Exemplo real do fluxo funcionando
 
-O incidente de CPU alta (`incidentes/incidente-cpu-alta.md`) demonstra o fluxo completo: alerta do Zabbix → webhook dispara → chamado aberto automaticamente no GLPI com todos os dados do problema → resolvido e fechado com os dois eventos (abertura e resolução) documentados no mesmo chamado. Ver `evidencias/Kali_Zabbix_ActionLog.png` e `evidencias/Kali_GLPI_Chamado.png`.
+O incidente de CPU alta ([incidentes/incidente-cpu-alta.md](incidentes/incidente-cpu-alta.md)) demonstra o fluxo completo: alerta do Zabbix → webhook dispara → chamado aberto automaticamente no GLPI com todos os dados do problema → resolvido e fechado com os dois eventos (abertura e resolução) documentados no mesmo chamado. Ver [evidencias/Kali_Zabbix_ActionLog.png](evidencias/Kali_Zabbix_ActionLog.png) e [evidencias/Kali_GLPI_Chamado.png](evidencias/Kali_GLPI_Chamado.png).
