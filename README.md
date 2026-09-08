@@ -62,7 +62,7 @@ Evidências registradas no chamado
         │
         ├── Resolvido pelo N1 → documenta e encerra
         │
-        └── Não resolvido → escalona para N2/N3 ([escalonamento.md](escalonamento.md))
+        └── Não resolvido → escalona para N2/N3
 ```
 
 ## GLPI — estrutura ITSM
@@ -90,6 +90,10 @@ Grafana conectado ao Zabbix via plugin `alexanderzobnin-zabbix-datasource`, aute
 Dashboard consolidado **NOC-CLIENT** com 6 painéis: CPU, Memory %, Disk, Network Traffic, Uptime, FreeSwap %.
 
 Ver [evidencias/Kali_Grafana_Dashboard.png](evidencias/Kali_Grafana_Dashboard.png).
+
+## Escalonamento
+
+A matriz completa de escalonamento N1 → N2 → N3 está em [escalonamento.md](escalonamento.md).
 
 ## Incidentes documentados
 
